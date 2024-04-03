@@ -22,8 +22,11 @@
         '';
 
         packages.default = pkgs.writeShellScriptBin "copy-to-docs" '' 
+          rm -rf docs
           mkdir -p docs
           cp -rf ${self'.packages.website}/* docs
+
+          echo "commit_message='recreate website'" >> $GITHUB_OUTPUT
         '';
       };
     };
