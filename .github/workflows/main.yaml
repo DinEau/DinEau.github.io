@@ -8,26 +8,15 @@ jobs:
     steps:
       - uses: actions/checkout@main
         name: Checkout main
+      - uses: cachix/install-nix-action@v24
         with:
-          path: main
-      - uses: actions/checkout@main
-        name: Checkout gh-pages
-        with: 
-          ref: "gh-pages"
-      - run: |
-          ls -la
-          git branch
-      #     rm -rf ./*
-      #     cp -rf main/* .
-      # - uses: cachix/install-nix-action@v24
-      #   with:
-      #     github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      # - uses: DeterminateSystems/magic-nix-cache-action@main
-      # - name: Build website and recreate docs pages
-      #   id: vars
-      #   run: nix run
-      # - name: Commit the changes to gh pages
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_name: Website Build Bot
-      #     author_email: web-build@site.bot
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Build website and recreate docs pages
+        id: vars
+        run: nix run
+      - name: Commit the changes to gh pages
+        uses: EndBug/add-and-commit@v9
+        with:
+          new_branch: gh-pages
+          push: --force
