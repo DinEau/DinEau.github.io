@@ -15,8 +15,13 @@ jobs:
       - name: Build website and recreate docs pages
         id: vars
         run: nix run
-      - name: Commit the changes to gh pages
+      - name: Delete branch old gh-pages
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          github_token: ${{github.token}}
+          branches: gh-pages
+      - name: Commit the changes to new gh-pages
         uses: EndBug/add-and-commit@v9
         with:
+          src: docs
           new_branch: gh-pages
-          push: --force
