@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
+        name: Checkout main
+      - uses: actions/checkout@main
+        name: Checkout gh-pages
         with: 
           ref: "gh-pages"
       - run: git checkout main -- .
