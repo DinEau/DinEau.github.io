@@ -15,7 +15,7 @@ jobs:
         with: 
           ref: "gh-pages"
       - run: |
-          rm -rf . 
+          rm -rf ./*
           cp -rf main/* .
       - uses: cachix/install-nix-action@v24
         with:
