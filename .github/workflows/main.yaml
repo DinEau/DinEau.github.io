@@ -8,7 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@main
         name: Checkout main
-        path: main
+        with:
+          path: main
       - uses: actions/checkout@main
         name: Checkout gh-pages
         with: 
