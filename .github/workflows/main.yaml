@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
+        with: 
+          ref: "gh-pages"
+      - run: git checkout main -- .
       - uses: cachix/install-nix-action@v24
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
@@ -14,20 +17,8 @@ jobs:
       - name: Build website and recreate docs pages
         id: vars
         run: nix run
-      - name: Commit the changes to main
+      - name: Commit the changes to gh pages
         uses: EndBug/add-and-commit@v9
         with:
           author_name: Website Build Bot
           author_email: web-build@site.bot
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@main
-        with: 
-          ref: "gh-pages"
-      - run: git checkout main -- docs
-      - name: Commit the changes to main
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: Website Deploy Bot
-          author_email: web-deploy@site.bot
