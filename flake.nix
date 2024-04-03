@@ -13,6 +13,18 @@
         devShells.default = pkgs.mkShell {
           packages = [ pkgs.zola ];
         };
+
+        packages.website = pkgs.runCommand "build-website" { } '' 
+          mkdir tmp
+          cp -rf ${./.}/* tmp
+          cd tmp
+          ${pkgs.zola}/bin/zola build --output-dir $out
+        '';
+
+        packages.default = pkgs.writeShellScriptBin "copy-to-docs" '' 
+          mkdir -p docs
+          cp -rf ${self'.packages.website}/* docs
+        '';
       };
     };
 }
