@@ -23,5 +23,6 @@ jobs:
       - name: Commit the changes to new gh-pages
         uses: EndBug/add-and-commit@v9
         with:
-          src: docs
+          add: 'docs'
+          push: '--force'
           new_branch: gh-pages
