@@ -8,11 +8,14 @@ jobs:
     steps:
       - uses: actions/checkout@main
         name: Checkout main
+        path: main
       - uses: actions/checkout@main
         name: Checkout gh-pages
         with: 
           ref: "gh-pages"
-      - run: git checkout main -- .
+      - run: |
+          rm -rf . 
+          cp -rf main/* .
       - uses: cachix/install-nix-action@v24
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
