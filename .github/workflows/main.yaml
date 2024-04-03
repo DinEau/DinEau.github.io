@@ -14,12 +14,12 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Build website and recreate docs pages
         run: nix run
-      - name: Delete branch old gh-pages
-        uses: dawidd6/action-delete-branch@v3
-        with:
-          github_token: ${{github.token}}
-          branches: gh-pages
-          soft_fail: true
+      # - name: Delete branch old gh-pages
+      #   uses: dawidd6/action-delete-branch@v3
+      #   with:
+      #     github_token: ${{github.token}}
+      #     branches: gh-pages
+      #     soft_fail: true
       - name: Commit the changes to new gh-pages
         uses: EndBug/add-and-commit@v9
         with:
