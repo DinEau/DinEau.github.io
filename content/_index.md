@@ -1,4 +1,4 @@
 +++
-paginate_by = 5
-sort_by = "date"
+title = "Din Eau"
+tagline = "Designer. Stylist. Nomad."
 +++
