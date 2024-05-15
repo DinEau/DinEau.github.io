@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "DinEau.github.io"
+base_url = "https://DinEau.github.io"
 
 title = "DinEau Homepage"
 description = "A single page theme for a professional online presense."
