@@ -1,4 +1,6 @@
 +++
-paginate_by = 5
-sort_by = "date"
+title = "Din Eau"
+tagline = "Fotografin"
 +++
+
+Das hier laesst sich leider noch (!) nicht bearbeiten :(

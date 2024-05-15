@@ -1,0 +1,42 @@
+{% macro explore() %}
+{% if config.extra.lists.explore is defined %}
+<!-- Explore list -->
+<div class="split-list">
+    <h3>Explore</h3>
+    <ul>
+        {% for item in config.extra.lists.explore %}
+        <li>
+            <a href="{{ item.url }}">{{ item.text }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}{# Explore #}
+{% endmacro explore %}
+
+{% macro social() %}
+{% if config.extra.lists.social is defined %}
+<!-- Social list -->
+<div class="split-list">
+    <h3>Social</h3>
+    <ul>
+        {% for item in config.extra.lists.social %}
+        <li>
+            <a href="{{ item.url }}">{{ item.text }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% else %}
+<!-- Social list -->
+<div class="split-list">
+    <h3>Social</h3>
+    <ul>
+        <li>
+            <a href="#">Social link?</a>
+        </li>
+    </ul>
+</div>
+{% endif %}{# Social #}
+</div>
+{% endmacro social %}
